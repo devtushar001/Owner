@@ -1,15 +1,18 @@
 import express from 'express';
+import env from 'dotenv';
+
+env.config();
 
 const app = express();
-const PORT = 10011
+const port = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.status(200).json({
         success: true,
-        message: `Server running on port 10011`
-    })
-})
+        message: `Server running on port ${port}`
+    });
+});
 
-app.listen(PORT, () => {
-    console.log(`Server up on ${PORT}`)
-})
+app.listen(port, () => {
+    console.log(`Server up on ${port}`);
+});
